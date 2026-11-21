@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Science Class X – Carbon and its Compounds · Keyword Chain</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f6fb;--ink:#1d2b4f;--mut:#5d6b8c;--card:#fff;--line:#cdd6e8;--key:#ffd84d;--keyi:#3a2d00;--ok:#1e9e5a;--bad:#d64545;--c:#0f7b6c;--M:#2f6fd6;--kw:#ff9f43;--kwi:#3b1d00;--rt:#7048e8;box-sizing:border-box}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121a2e;--ink:#e8edf9;--mut:#9aa7c7;--card:#1c2644;--line:#34426b;--key:#f2c230;--keyi:#2b2100;--c:#3cc9b4;--M:#6ea0f5;--kw:#f5a54f;--kwi:#2e1700;--rt:#9775fa}}
+:root[data-theme="dark"]{--bg:#121a2e;--ink:#e8edf9;--mut:#9aa7c7;--card:#1c2644;--line:#34426b;--key:#f2c230;--keyi:#2b2100;--c:#3cc9b4;--M:#6ea0f5;--kw:#f5a54f;--kwi:#2e1700;--rt:#9775fa}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Fredoka',system-ui,sans-serif;min-height:100vh;min-height:100dvh;touch-action:manipulation;overflow-x:hidden}
+main{max-width:640px;margin:0 auto;padding:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) calc(32px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left))}
+h1{font-size:1.75rem;margin:6px 0 2px;line-height:1.2}.sub{margin:0 0 12px;color:var(--mut);font-size:.95rem}
+button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px;position:sticky;top:0;z-index:10;background:var(--bg);padding:8px 0 6px}
+.hud{font-weight:600;white-space:nowrap}
+.back{border:2px solid var(--line);background:var(--card);border-radius:22px;padding:8px 16px;min-height:42px}
+.prog{height:8px;background:var(--line);border-radius:8px;overflow:hidden;margin:6px 0 10px}.prog i{display:block;height:100%;background:var(--c);transition:width .4s}
+.tt{font-size:1.45rem;font-weight:600;margin-top:4px;line-height:1.25}
+.sec{margin:18px 0 4px;font-size:1.05rem;font-weight:600;color:var(--c);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.sec small{font-weight:500;color:var(--mut);font-size:.85rem}
+.row{display:flex;gap:12px;align-items:center;width:100%;text-align:left;background:var(--card);border:2px solid var(--line);border-radius:12px;padding:12px 14px;margin:8px 0;font-weight:500;font-size:1.2rem;min-height:56px;line-height:1.3}
+.row:active{border-color:var(--c)}.row:disabled{opacity:.5;cursor:not-allowed}.row.ok{border-color:var(--ok)}.row>span{width:22px;text-align:center;flex:none}
+.row b{margin-left:auto;color:var(--mut);font-size:.8rem;white-space:nowrap}
+.banner{background:var(--card);border:2px solid var(--ok);border-radius:14px;padding:12px 14px;margin:10px 0;line-height:1.45}
+.banner.wait{border-color:var(--line)}
+.who{font-weight:500;margin:0 0 6px}.link{background:none;border:0;color:var(--M);text-decoration:underline;padding:8px 6px;min-height:40px}
+.ask{margin:14px 0 8px;color:var(--mut);font-weight:500;font-size:1.2rem}.ask span{color:var(--ink);font-weight:600}
+.opts{display:grid;gap:10px}
+.opt{background:var(--card);border:2px solid var(--line);border-radius:12px;padding:14px;text-align:left;font-weight:600;font-size:1.25rem;min-height:58px;overflow-wrap:anywhere}
+.opt:active{border-color:var(--c)}
+.opt.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 14%,var(--card));animation:sh .3s;pointer-events:none}
+.opt.good{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 18%,var(--card))}
+@keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.end{background:var(--card);border-radius:16px;padding:14px;margin-top:14px;border-top:6px solid var(--ok)}
+.end h3{margin:0 0 6px;font-size:1.4rem}.end p{margin:8px 0;line-height:1.5;font-size:1.15rem}
+.mn{background:var(--key);color:var(--keyi);border-radius:10px;padding:8px 12px;font-weight:500;font-size:1.15rem}
+.go{background:var(--c);color:#fff;border:0;border-radius:22px;padding:12px 22px;font-weight:600;margin:12px 8px 0 0;min-height:46px}
+.kboard{background:var(--card);border-radius:16px;padding:14px 10px;display:flex;flex-wrap:wrap;align-items:center;row-gap:18px;min-height:110px}
+.node{background:var(--kw);color:var(--kwi);font-weight:600;padding:8px 12px;border-radius:12px;box-shadow:0 3px 0 rgba(0,0,0,.18);animation:pop .35s;font-size:1.2rem}
+.node.root{background:var(--rt);color:#fff;font-size:1.3rem}
+.node.from{background:transparent;color:var(--rt);border:2px dashed var(--rt);box-shadow:none}
+.br{flex-basis:100%;height:0}
+.arr{display:flex;flex-direction:column;align-items:center;min-width:104px;padding:0 4px;--L:#d6336c}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .arr{--L:#e0457f}}
+:root[data-theme="dark"] .arr{--L:#e0457f}
+.arr b{font-size:1.25rem;font-weight:600;color:var(--L);background:none;border:0;padding:0 2px;text-align:center;line-height:1.2;margin-bottom:6px}
+.arr .ln{position:relative;width:100%;height:4px;background:var(--L);border-radius:2px}
+.arr .ln:after{content:"";position:absolute;right:-2px;top:-6px;border-left:12px solid var(--L);border-top:8px solid transparent;border-bottom:8px solid transparent}
+.arr .en{font-style:normal;font-size:.95rem;font-weight:500;color:var(--mut);margin-top:6px;text-align:center;line-height:1.2}
+.arr.q b{font-size:1.3rem}
+.arr.q .ln{background:repeating-linear-gradient(90deg,var(--L) 0 6px,transparent 6px 10px)}.arr.q .ln:after{border-left-color:var(--L)}
+@keyframes pop{from{transform:translateY(-8px) scale(.6);opacity:0}to{transform:none;opacity:1}}
+[hidden]{display:none!important}
+.ov{position:fixed;inset:0;z-index:50;background:rgba(10,16,28,.65);display:grid;place-items:center;padding:16px;overflow-y:auto}
+.mod{width:min(440px,100%);background:var(--card);border:3px solid var(--ink);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.mod h2{margin:0}.mod p{margin:0;color:var(--mut)}.mod label{display:flex;flex-direction:column;gap:4px;font-weight:500;color:var(--mut);font-size:.9rem}
+.mod input{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:10px;padding:11px 12px;min-width:0;width:100%}
+.ph{display:flex;border:2px solid var(--line);border-radius:10px;overflow:hidden;background:var(--bg)}.ph i{font-style:normal;padding:11px 12px;background:var(--key);color:var(--keyi);font-weight:600}.ph input{border:0;border-radius:0;background:transparent}
+.err{color:var(--bad)!important;font-weight:600;min-height:1.3em}
+.mod .go{background:var(--M);margin:6px 0 0;padding:14px 18px;font-size:1.1rem;width:100%}
+@media(max-width:380px){.arr{min-width:88px}.arr b{font-size:1.1rem}.arr.q b{font-size:1.15rem}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.dg{display:block;width:100%;max-width:230px;height:auto;margin:0 auto;color:var(--ink);stroke:currentColor;stroke-width:3;stroke-linecap:round;fill:none}
+.dg text{fill:currentColor;stroke:none;font-family:'Fredoka',system-ui,sans-serif}
+.dg text.c{fill:var(--c)}
+.dg .st{stroke:var(--bad);stroke-dasharray:4 3}
+.dg circle.st{fill:var(--card);stroke-dasharray:none}
+.qd{background:var(--card);border:2px solid var(--line);border-radius:12px;padding:10px;margin:8px 0}
+.dgopt{display:flex;justify-content:center;align-items:center}
+.dgopt .dg{max-width:200px}
+.node .dg{height:46px;width:auto;max-width:none;margin:0;color:var(--kwi)}
+.node .dg text.c{fill:var(--kwi)}
+</style></head><body><main id="app"></main>
+<div class="ov" id="ov" hidden><form class="mod" id="f" novalidate><h2>Before you begin</h2><p>Enter your details to start.</p><label>Name<input id="fn" autocomplete="name" placeholder="Full name"></label><label>Class<input id="fc" inputmode="numeric" maxlength="2" placeholder="e.g. 10"></label><label>Phone Number<span class="ph"><i>+91</i><input id="fp" type="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number"></span></label><p class="err" id="fe" role="alert"></p><button class="go">Start</button></form></div>
+<script>
+const TITLE="Carbon and its Compounds";
+
+/* ---------- Keyword chain data ----------
+   part ~ root ~ title ~ steps ~ tail (optional) ~ mnemonic (optional)
+   steps = label|correct|wrong1|wrong2|wrong3|wrong4 ; next step ...
+   label forms:  "label"  |  "Node^label" (restart from an earlier node)  |  "long label#short label" (short is used in the chain/summary)
+   Every option starts with the same first 3 letters as the correct answer. */
+const RAW=[
+"A~Covalent bond~Covalent bond~kaise banta hai?|Sharing electrons|Sharing protons|Sharing neutrons|Sharing nuclei|Sharing ions;Covalent bond^1 pair?|Single bond (H2)|Single bond (O2)|Single bond (N2)|Single bond (CO2)|Single bond (CO);Covalent bond^2 pairs?|Double bond (O2)|Double bond (H2)|Double bond (N2)|Double bond (CH4)|Double bond (CO);Covalent bond^3 pairs?|Triple bond (N2)|Triple bond (H2)|Triple bond (O2)|Triple bond (CO2)|Triple bond (CH4);Covalent bond^molecules ke beech?|Weak forces|Weak bonds|Weak ions|Weak metals|Weak atoms;isliye kya hota hai?|Low melting & boiling points|Low melting & high boiling points|Low melting & flash points|Low melting & freezing points|Low melting & mixing points;Covalent bond^electricity ka kaisa conductor?|Poor conductors|Poor insulators|Poor solvents|Poor oxidisers|Poor catalysts",
+"A~Carbon~Why carbon forms covalent bonds~ke valence kitne?|Four electrons|Four protons|Four neutrons|Four shells|Four ions;gain karein toh?|C⁴⁻ anion|C⁴⁻ cation|C⁴⁻ atom|C⁴⁻ molecule|C⁴⁻ salt;kya dikkat hai?|Hard to hold ten electrons|Hard to hold ten neutrons|Hard to hold ten protons|Hard to hold ten ions|Hard to hold ten atoms;Carbon^lose karein toh?|C⁴⁺ cation|C⁴⁺ anion|C⁴⁺ atom|C⁴⁺ molecule|C⁴⁺ salt;kya dikkat hai?|Huge energy needed|Huge energy released|Huge energy stored|Huge energy wasted|Huge energy gained;toh kya karta hai?|Shares electrons|Shares protons|Shares neutrons|Shares nuclei|Shares shells;kya banta hai?|Covalent bonds|Covalent ions|Covalent salts|Covalent metals|Covalent acids",
+"A~Diamond~Diamond~har carbon kitno se juda?|Four carbons|Four hydrogens|Four oxygens|Four halogens|Four metals;kaisa structure?|Rigid 3D structure|Rigid 2D structure|Rigid 1D structure|Rigid layered structure|Rigid ring structure;kaisa substance?|Hardest known substance|Hardest known metal|Hardest known alloy|Hardest known salt|Hardest known liquid;Diamond^synthetic kaise?|High pressure & temperature|High pressure & cooling|High pressure & freezing|High pressure & vacuum|High pressure & electrolysis",
+"A~Graphite~Graphite~har carbon kitno se juda?|Three carbons|Three hydrogens|Three oxygens|Three halogens|Three metals;kis plane mein?|Same plane|Same place|Same phase|Same pattern|Same pitch;kaisa array?|Hexagonal array|Hexagonal crystal|Hexagonal prism|Hexagonal ring|Hexagonal cube;kaise rakhe?|Layers one above other|Layers one beside other|Layers one inside other|Layers one apart other|Layers one against other;kaisa feel?|Smooth & slippery|Smooth & rough|Smooth & brittle|Smooth & sticky|Smooth & hard;Graphite^electricity ka kaisa conductor?|Good conductor|Good insulator|Good semiconductor|Good solvent|Good oxidiser",
+"A~Fullerene~Fullerene~kya hai?|Carbon allotrope|Carbon alloy|Carbon acid|Carbon salt|Carbon ion;shape kaisa?|Football-like cage|Football-like chain|Football-like sheet|Football-like ring|Football-like layer;naam kiske naam par?|Buckminster Fuller|Buckminster Faraday|Buckminster Fleming|Buckminster Fermi|Buckminster Franklin",
+"B~Carbon~Why carbon has so many compounds~kitne compounds banata hai?|Millions of compounds|Millions of elements|Millions of metals|Millions of salts|Millions of ions;kin do reasons ki wajah se?|Catenation & tetravalency|Catenation & divalency|Catenation & monovalency|Catenation & trivalency|Catenation & hexavalency;Carbon^catenation kya?|Self-linking property|Self-reacting property|Self-heating property|Self-melting property|Self-burning property;kya banta hai?|Chains, branches & rings|Chains, bonds & ions|Chains, salts & acids|Chains, metals & gases|Chains, ions & crystals;Carbon^tetravalency ki wajah se kitne atoms se bond banata hai?|Four atoms|Four ions|Four shells|Four metals|Four orbits;Carbon^bonds kaise?|Very strong|Very weak|Very ionic|Very polar|Very brittle;kyunki size kaisa?|Small size|Small mass|Small charge|Small density|Small colour",
+"B~Saturated compounds~Saturated compounds~kaunse bonds?|Only single bonds|Only double bonds|Only triple bonds|Only ionic bonds|Only hydrogen bonds;Saturated compounds^hydrocarbon naam?|Alkanes|Alkenes|Alkynes|Alkyls|Alkalis;Saturated compounds^behaviour?|Not very reactive|Not very acidic|Not very stable|Not very basic|Not very heavy;Saturated compounds^jalne par?|Clean flame|Clean soot|Clean smoke|Clean ash|Clean sparks",
+"B~Unsaturated compounds~Unsaturated compounds~kaunse bonds?|Double or triple bonds|Double or single bonds|Double or ionic bonds|Double or metallic bonds|Double or hydrogen bonds;Unsaturated compounds^double bond wale hydrocarbons ka naam?|Alkenes|Alkanes|Alkynes|Alkyls|Alkalis;formula?|CnH2n|CnH2n+2|CnH2n-2|CnHn|CnH2;Unsaturated compounds^triple bond wale hydrocarbons ka naam?|Alkynes|Alkanes|Alkenes|Alkyls|Alkalis;formula?|CnH2n-2|CnH2n|CnH2n+2|CnHn|CnH2;Unsaturated compounds^behaviour?|More reactive|More stable|More inert|More dense|More acidic;Unsaturated compounds^jalne par?|Yellow sooty flame|Yellow clean flame|Yellow blue flame|Yellow smokeless flame|Yellow cold flame",
+"B~Alkanes~Alkanes (names and formula)~1 carbon wala?|Methane|Methanol|Methanal|Methyl|Methoxy;Alkanes^2 carbon wala?|Ethane|Ethene|Ethyne|Ethanol|Ethanal;Alkanes^3 carbon wala?|Propane|Propene|Propyne|Propanol|Propanal;Alkanes^4 carbon wala?|Butane|Butene|Butyne|Butanol|Butanone;Alkanes^5 carbon wala?|Pentane|Pentene|Pentyne|Pentanol|Pentanal;Alkanes^6 carbon wala?|Hexane|Hexene|Hexyne|Hexanol|Hexanal;Alkanes^general formula?|CnH2n+2|CnH2n|CnH2n-2|CnHn|CnH2",
+"B~Structural isomers~Structural isomers~formula kaisa?|Same molecular formula|Same molecular mass|Same molecular shape|Same molecular name|Same molecular colour;structure kaisa?|Different structures|Different formulae|Different masses|Different valencies|Different atoms;Structural isomers^Butane (C4H10) ke kitne isomers?|Two isomers|Two ions|Two atoms|Two metals|Two shells;Structural isomers^Pentane (C5H12) ke kitne isomers?|Three isomers|Three ions|Three atoms|Three metals|Three shells",
+"B~Ring compounds~Ring compounds~6 carbon, saturated?|Cyclohexane|Cyclopentane|Cyclobutane|Cyclopropane|Cycloheptane;formula?|C6H12|C6H14|C6H10|C6H11|C6H13;Ring compounds^6 carbon, double bonds?|Benzene|Benzine|Benzoate|Benzyl|Bentonite;formula?|C6H6|C6H5|C6H7|C6H8|C6H4",
+"B~Functional group~Functional group~kya hai?|Heteroatom or group|Heteroatom or gas|Heteroatom or metal|Heteroatom or salt|Heteroatom or acid;kisse judta hai?|Carbon chain|Carbon dioxide|Carbonates|Carbides|Carbon rings;kya deta hai?|Specific properties|Specific heat|Specific gravity|Specific mass|Specific volume;Functional group^alcohol ka?|Hydroxyl group|Hydrogen group|Hydride group|Hydrate group|Hydronium group;Functional group^carboxylic acid ka?|Carboxyl group|Carbonyl group|Carbon group|Carbide group|Carbonate group",
+"B~Homologous series~Homologous series~kya hai?|Family of compounds|Family of elements|Family of mixtures|Family of metals|Family of salts;kya same hai?|Same functional group|Same functional isomer|Same functional mass|Same functional ion|Same functional salt;farak kya?|One CH2 unit|One CH3 unit|One CH4 unit|One OH unit|One CO unit;ek CH2 unit ka mass kitna? (u = atomic mass unit)|14 u|14 g|14 kg|14 mol|14 K;Homologous series^alcohol example?|Methanol, ethanol & propanol|Methanol, ethanal & propanal|Methanol, ethane & propane|Methanol, ethene & propene|Methanol, ethyne & propyne;Homologous series^alkene formula?|CnH2n|CnH2n+2|CnH2n-2|CnHn|CnH2;Homologous series^alkane formula?|CnH2n+2|CnH2n|CnH2n-2|CnHn|CnH2;Homologous series^alcohol (-OH) ka general formula?|CnH2n+1OH|CnH2n+2OH|CnH2nOH|CnH2n+1CHO|CnH2n+1COOH;Homologous series^unke reactions ka nature kaisa?|Similar, due to same functional group|Different, due to different functional groups|Similar, due to same boiling point|Similar, due to same molecular mass|Different, due to different chain length;Homologous series^boiling point kaise badalta hai?|Gradual increase|Gradual decrease|Random change|No change|Sudden jump;Homologous series^melting point kaise badalta hai?|Increases, but irregularly|Increases smoothly|Decreases smoothly|Stays the same|Drops suddenly",
+"C~Ethene~Structure of ethene~formula kya hai?|C2H4|C2H6|C2H2|C2H5|C2H3;pehle skeleton mein do carbons kis bond se jodein?|{{cc1=single bond}}|{{cc2=double bond}}|{{cc3=triple bond}};phir kya lagayein?{{sk0=carbon skeleton with open valencies}}|Hydrogen atoms|Hydrogen ions|Hydrogen bonds|Hydrogen gas|Hydrogen halides;har carbon par kitne?|{{h2=2 H on each carbon}}|{{h1=1 H on each carbon}}|{{h3=3 H on each carbon}};valency kitni bachi?{{vl=each carbon has one open valency}}|One valency|One metal|One shell|One orbit|One ion;bachi valency bharne par final structure kaisa?|{{eth=ethene H2C=CH2}}|{{ena=ethane H3C-CH3}}|{{eny=ethyne HC≡CH}}",
+"C~Organic compounds~Vital force and Wöhler~ke baare mein pehle manyata thi ki ye kahan bante hain?|Only in living systems|Only in laboratories|Only in factories|Only in minerals|Only in oceans;iske liye kya zaroori maana jaata tha?|Vital force|Vital organ|Vital sign|Vital cell|Vital gas;kisne galat kiya?|Friedrich Wöhler|Friedrich Kekule|Friedrich Mendel|Friedrich Dalton|Friedrich Newton;kab?|1828|1829|1827|1826|1825;kya banaya?|Urea|Ureter|Urethra|Ureide|Urease;kisse?|Ammonium cyanate|Ammonium chloride|Ammonium nitrate|Ammonium sulphate|Ammonium carbonate;Organic compounds^se bahar kaun?|Carbides, oxides & carbonates|Carbides, alkanes & carbonates|Carbides, acids & carbonates|Carbides, alcohols & carbonates|Carbides, esters & carbonates"
+];
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+/* ---------- Diagrams: a label may end with {{key=alt}} (shown under the question); an option may be {{key=alt}} ---------- */
+const DG=(()=>{
+ const T=(x,y,t,c)=>`<text x="${x}" y="${y}" text-anchor="middle" dominant-baseline="central" font-size="22" font-weight="600"${c?' class="c"':''}>${t}</text>`;
+ const part=(x1,y1,x2,y2,lx,ly,v)=>v=='H'?`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`+T(lx,ly,'H'):`<line class="st" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/><circle class="st" cx="${lx}" cy="${ly}" r="5"/>`;
+ // n = bond order between the carbons; up/dn/out = [left C, right C], each 'H' | 's' (open valency) | 0
+ const mk=(n,up,dn,out)=>{const xs=[60,140];let b=xs.map(x=>T(x,50,'C',1)).join('');
+  (n==1?[0]:n==2?[-4,4]:[-7,0,7]).forEach(o=>b+=`<line x1="74" y1="${50+o}" x2="126" y2="${50+o}"/>`);
+  up.forEach((v,i)=>{if(v)b+=part(xs[i],38,xs[i],28,xs[i],17,v)});
+  dn.forEach((v,i)=>{if(v)b+=part(xs[i],62,xs[i],72,xs[i],83,v)});
+  out.forEach((v,i)=>{if(v)b+=i?part(152,50,166,50,178,50,v):part(48,50,34,50,22,50,v)});
+  return b};
+ const F='0 0 200 100',B='45 30 110 40',H2=['H','H'],S2=['s','s'],N2=[0,0];
+ return{
+  cc1:[B,mk(1,N2,N2,N2)],cc2:[B,mk(2,N2,N2,N2)],cc3:[B,mk(3,N2,N2,N2)],
+  sk0:[F,mk(1,S2,S2,S2)],
+  h1:[F,mk(1,H2,N2,N2)],h2:[F,mk(1,H2,H2,N2)],h3:[F,mk(1,H2,H2,H2)],
+  vl:[F,mk(1,H2,H2,S2)],
+  eth:[F,mk(2,H2,H2,N2)],ena:[F,mk(1,H2,H2,H2)],eny:[F,mk(3,N2,N2,H2)]}})();
+const DT=/\{\{(\w+)=([^}]*)\}\}/;
+const dgo=o=>{const m=DT.exec(o);return m&&DG[m[1]]?{k:m[1],t:m[2]}:null};
+const plain=o=>{const d=dgo(o);return d?d.t:o};
+const rich=o=>{const d=dgo(o);return d?`<svg class="dg" viewBox="${DG[d.k][0]}" role="img" aria-label="${esc(d.t)}">${DG[d.k][1]}</svg>`:esc(o)};
+
+const EN={"gain karein toh?":"if it gains them?","lose karein toh?":"if it loses them?","kya dikkat hai?":"what is the problem?","kaise banta hai?":"how is it formed?","1 pair?":"with 1 shared pair?","2 pairs?":"with 2 shared pairs?","3 pairs?":"with 3 shared pairs?","molecules ke beech?":"between molecules?","isliye kya hota hai?":"so what results?","electricity ka kaisa conductor?":"what kind of conductor of electricity?","ke valence kitne?":"how many valence electrons?","gain kyun nahi?":"why can't it gain?","lose kyun nahi?":"why can't it lose?","toh kya karta hai?":"so what does it do?","kya banta hai?":"what forms?","har carbon kitno se juda?":"each carbon joined to how many?","kaisa structure?":"what structure?","kaisa substance?":"what kind of substance?","synthetic kaise?":"made artificially how?","kis plane mein?":"in which plane?","kaisa array?":"what kind of array?","kaise rakhe?":"how are they placed?","kaisa feel?":"how does it feel?","kya hai?":"what is it?","shape kaisa?":"what shape?","naam kiske naam par?":"named after whom?","kitne compounds banata hai?":"how many compounds does it form?","kin do reasons ki wajah se?":"due to which two reasons?","catenation kya?":"what is catenation?","tetravalency ki wajah se kitne atoms se bond banata hai?":"how many atoms does it bond with due to tetravalency?","bonds kaise?":"how are its bonds?","kyunki size kaisa?":"because its size is?","kaunse bonds?":"which bonds?","hydrocarbon naam?":"hydrocarbon name?","behaviour?":"how does it behave?","jalne par?":"on burning?","double bond wale hydrocarbons ka naam?":"name of hydrocarbons with a double bond?","formula?":"formula?","triple bond wale hydrocarbons ka naam?":"name of hydrocarbons with a triple bond?","1 carbon wala?":"the 1-carbon one?","2 carbon wala?":"the 2-carbon one?","3 carbon wala?":"the 3-carbon one?","4 carbon wala?":"the 4-carbon one?","5 carbon wala?":"the 5-carbon one?","6 carbon wala?":"the 6-carbon one?","general formula?":"general formula?","formula kaisa?":"how is the formula?","structure kaisa?":"how is the structure?","Butane (C4H10) ke kitne isomers?":"how many isomers does butane (C4H10) have?","Pentane (C5H12) ke kitne isomers?":"how many isomers does pentane (C5H12) have?","6 carbon, saturated?":"6 carbons, saturated?","6 carbon, double bonds?":"6 carbons, with double bonds?","kisse judta hai?":"attached to what?","kya deta hai?":"what does it give?","alcohol ka?":"for alcohol?","carboxylic acid ka?":"for carboxylic acid?","kya same hai?":"what is the same?","farak kya?":"what is the difference?","ek CH2 unit ka mass kitna? (u = atomic mass unit)":"how much is the mass of one CH2 unit? (u = atomic mass unit)","alcohol example?":"alcohol example?","alkene formula?":"alkene formula?","alkane formula?":"alkane formula?","alcohol (-OH) ka general formula?":"general formula of alcohols (-OH)?","unke reactions ka nature kaisa?":"what is the nature of their reactions?","boiling point kaise badalta hai?":"how does boiling point change?","melting point kaise badalta hai?":"how does melting point change?","formula kya hai?":"what is the formula?","pehle skeleton mein do carbons kis bond se jodein?":"first, with which bond do we join the two carbons in the skeleton?","phir kya lagayein?":"then attach what?","har carbon par kitne?":"how many on each carbon?","valency kitni bachi?":"how much valency is left?","bachi valency bharne par final structure kaisa?":"after filling the leftover valency, what is the final structure?","ke baare mein pehle manyata thi ki ye kahan bante hain?":"earlier it was believed that they form where?","iske liye kya zaroori maana jaata tha?":"what was believed necessary for this?","kisne galat kiya?":"who proved it wrong?","kab?":"when?","kya banaya?":"what did he make?","kisse?":"from what?","se bahar kaun?":"which are excluded from it?"};
+const PN={A:"Part A · Bonding & allotropes",B:"Part B · Carbon compounds",C:"Part C · Exam extras"},cn={A:0,B:0,C:0};
+const K=RAW.map(r=>{const p=r.split("~");cn[p[0]]++;return{part:p[0],id:p[0]+cn[p[0]],root:p[1],title:p[2],steps:p[3].split(";").map(s=>{const a=s.split("|");let l=a[0],f="",sh="",dq="";
+ const dm=DT.exec(l);if(dm){dq=dm[0];l=l.replace(dq,"").trim()}
+ if(l.includes("^")){const q=l.split("^");f=q[0];l=q[1]}
+ if(l.includes("#")){const q=l.split("#");l=q[0];sh=q[1]}
+ return{l,s:sh||l,e:EN[l]||"",f,dq,a:a[1],o:a.slice(1)}}),tail:p[4]||"",mn:p[5]||""}});
+
+/* ---------- Setup / storage ---------- */
+const URL_="https://script.google.com/macros/s/AKfycbypo-5ThjzEFYh1t-dlCp94v01kU1wpxnu1WCNKLDgxfA3KXuN8Nh7c_XdiBqhTAfyxGA/exec";
+const app=document.getElementById("app"),$=id=>document.getElementById(id);
+let U=null,P={k:{},sent:0,t:0},lt=Date.now(),sending=0,G;
+try{U=JSON.parse(localStorage.getItem('sci10-u'))}catch(e){}
+try{const s=JSON.parse(localStorage.getItem('sci10-carbon-p2'));if(s)P=Object.assign(P,s)}catch(e){}
+const save=()=>{try{localStorage.setItem('sci10-carbon-p2',JSON.stringify(P))}catch(e){}};
+const sh=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const cntDone=()=>K.filter((_,i)=>P.k[i]!=null).length;
+const complete=()=>cntDone()==K.length;
+const addTime=()=>{P.t=(P.t||0)+Math.min(Math.round((Date.now()-lt)/1000),600);lt=Date.now()};
+
+/* ---------- Details form ---------- */
+function ask(){$('ov').hidden=false;$('fe').textContent='';if(U){$('fn').value=U.n;$('fc').value=U.c;$('fp').value=U.p}$('fn').focus()}
+$('fc').oninput=e=>e.target.value=e.target.value.replace(/\D/g,'');$('fp').oninput=e=>e.target.value=e.target.value.replace(/\D/g,'');
+$('f').onsubmit=e=>{e.preventDefault();const n=$('fn').value.trim(),c=$('fc').value.trim(),p=$('fp').value.trim(),m=$('fe');
+ if(!n){m.textContent='Please enter your name.';return}if(!/^\d{1,2}$/.test(c)){m.textContent='Please enter your class as a number, for example 10.';return}if(!/^\d{10}$/.test(p)){m.textContent='Please enter a 10-digit phone number.';return}
+ U={n,c,p};try{localStorage.setItem('sci10-u',JSON.stringify(U))}catch(x){}$('ov').hidden=true;home()};
+
+/* ---------- Sending: ONLY when the whole chapter is complete ---------- */
+function tally(){let s=0,t=0,good=[],rev=[];
+ K.forEach((d,i)=>{const v=P.k[i]||0,n=d.steps.length;s+=v;t+=n;(v==n?good:rev).push(d.id+" "+d.root)});
+ return{s,t,good,rev}}
+function push(){
+ sending=1;const r=tally(),sec=P.t||0;
+ const p={name:U.n,class:U.c,Class:U.c,className:U.c,studentClass:U.c,phone:U.p,Phone:U.p,quiz:"Science X – "+TITLE+" (Keyword Chain)",score:String(r.s),total:String(r.t),percentage:(r.s/r.t*100).toFixed(1),timeTaken:String(sec),timeFormatted:Math.floor(sec/60)+"m "+sec%60+"s",topicsCorrect:r.good.join(", "),topicsRevise:r.rev.join(", "),photoAttached:"No",photoCount:"0"};
+ let fr=$('subFrame');if(!fr){fr=document.createElement('iframe');fr.name=fr.id='subFrame';fr.style.display='none';fr.setAttribute('aria-hidden','true');document.body.appendChild(fr)}
+ let fin=0,tm;const ok=()=>{if(fin)return;fin=1;clearTimeout(tm);fr.onload=null;P.sent=1;save();sending=0;const e=$('st');if(e)e.textContent=`Chapter score ${r.s} / ${r.t} sent to your teacher ✓`};
+ tm=setTimeout(ok,60000);const t0=Date.now();fr.onload=()=>setTimeout(ok,Math.max(0,600-(Date.now()-t0)));
+ const f=document.createElement('form');f.method='POST';f.action=URL_;f.target='subFrame';f.style.display='none';
+ Object.keys(p).forEach(n=>{const i=document.createElement('input');i.type='hidden';i.name=n;i.value=p[n];f.appendChild(i)});
+ document.body.appendChild(f);f.submit();f.remove()}
+function checkChapter(){
+ if(!complete())return `<p class="st">${cntDone()} of ${K.length} topics done — finish all to send your score.</p>`;
+ if(P.sent)return `<p class="st" id="st">Chapter complete ✓ Score already sent.</p>`;
+ if(!sending)push();
+ return `<p class="st" id="st"><b>Chapter complete! 🎉</b> Sending chapter score…</p>`}
+function resend(){push();home()}
+
+/* ---------- Chapter page ---------- */
+function home(){if(!U){ask();return}
+ let h=`<h1>${TITLE}</h1><p class="sub">Keyword Chain · Science Class X</p><p class="who">${esc(U.n)} · Class ${esc(U.c)} <button class="link" onclick="ask()">Change</button></p><div class="prog"><i style="width:${cntDone()/K.length*100}%"></i></div>`;
+ if(complete())h+=P.sent?`<div class="banner">🎉 Chapter complete · score sent ✓</div>`:`<div class="banner wait">🎉 Chapter complete! ${sending?'Sending score…':'Score not confirmed yet.'} <button class="link" onclick="resend()">Send again</button></div>`;
+ h+=`<p class="sub" style="margin:8px 0 0">Finish a topic to unlock the next one. Your score is sent once, when every topic is complete.</p>`;
+ let last="";
+ K.forEach((d,i)=>{
+  if(d.part!=last){last=d.part;const L=K.filter(x=>x.part==d.part);h+=`<div class="sec">${PN[d.part]} <small>${L.filter(x=>P.k[K.indexOf(x)]!=null).length}/${L.length}</small></div>`}
+  const ok=P.k[i]!=null,open=ok||i==0||P.k[i-1]!=null;
+  h+=`<button class="row${ok?' ok':''}" ${open?`onclick="kplay(${i})"`:'disabled'}><span>${ok?'✓':open?'▶':'🔒'}</span>${d.id} · ${esc(d.title)}${ok?`<b>${P.k[i]}/${d.steps.length}</b>`:''}</button>`});
+ app.innerHTML=h;window.scrollTo(0,0)}
+
+/* ================= KEYWORD CHAIN ================= */
+function kplay(i){lt=Date.now();G={i,s:0,m:0,first:0,got:[],lock:0};kdraw()}
+function kdraw(){G.lock=0;
+ const d=K[G.i],st=d.steps[G.s];
+ const br=f=>`<span class="br"></span><span class="node from">${esc(f)}</span>`;
+ let b=`<span class="node root">${esc(d.root)}</span>`;
+ G.got.forEach((g,k)=>{const s=d.steps[k];if(s.f)b+=br(s.f);b+=`<span class="arr"><b>${esc(s.s)}</b><span class="ln"></span><i class="en">${esc(s.e)}</i></span><span class="node">${rich(g)}</span>`});
+ const fin=G.s>=d.steps.length;
+ if(!fin){if(st.f)b+=br(st.f);b+=`<span class="arr q"><b>${esc(st.s)}</b><span class="ln"></span><i class="en">${esc(st.e)}</i></span>`}
+ let h=`<div><div class="top"><button class="back" onclick="home()">‹ Topics</button><span class="hud">Step ${Math.min(G.s+1,d.steps.length)} of ${d.steps.length}</span></div>
+ <div class="tt">${d.id} · ${esc(d.title)}</div><div class="prog"><i style="width:${G.s/d.steps.length*100}%"></i></div><div class="kboard">${b}</div>`;
+ if(!fin){const subj=st.f||(G.got.length?G.got[G.got.length-1]:d.root);
+  h+=`<div class="ask"><span>${esc(plain(subj))}</span> ${esc(st.l)}</div>${st.dq?`<div class="qd">${rich(st.dq)}</div>`:''}<div class="opts">`;
+  sh(st.o).forEach(o=>h+=`<button class="opt${dgo(o)?' dgopt':''}" data-a="${o===st.a?1:0}" onclick="kpick(this)">${rich(o)}</button>`);h+='</div>'}
+ else{const n=d.steps.length,sent=esc(d.root)+d.steps.map(s=>(s.f?". "+esc(s.f)+" ":" ")+esc(s.s)+" "+esc(plain(s.a))).join("")+(d.tail?" "+esc(d.tail):"")+".",nx=G.i+1<K.length?G.i+1:null;
+  P.k[G.i]=Math.max(P.k[G.i]||0,G.first);addTime();save();
+  const status=checkChapter();
+  h+=`<div class="end"><h3>${G.first==n?'Perfect chain! ⭐':'Chain complete! 👏'}</h3><p><b>${G.first}</b> of ${n} keywords right on the first try.</p><p>${sent}</p>${d.mn?`<p class="mn">Mnemonic: ${esc(d.mn)}</p>`:''}${status}
+  <button class="go" onclick="kplay(${G.i})">Play again</button><button class="go" onclick="${nx!=null?`kplay(${nx})`:`home()`}">${nx!=null?'Next topic':'Back to chapter'}</button></div>`}
+ app.innerHTML=h+'</div>';window.scrollTo(0,0)}
+function kpick(el){if(G.lock)return;
+ if(el.dataset.a=="1"){G.lock=1;const st=K[G.i].steps[G.s];if(!G.m)G.first++;G.m=0;G.got.push(st.a);G.s++;el.classList.add("good");setTimeout(kdraw,450)}
+ else{G.m++;el.classList.add("bad")}}
+
+home();
+</script></body></html>
