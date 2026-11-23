@@ -52,6 +52,20 @@ button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation}
 .arr.q b{font-size:1.3rem}
 .arr.q .ln{background:repeating-linear-gradient(90deg,var(--L) 0 6px,transparent 6px 10px)}.arr.q .ln:after{border-left-color:var(--L)}
 @keyframes pop{from{transform:translateY(-8px) scale(.6);opacity:0}to{transform:none;opacity:1}}
+.eqln{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:1.25rem;font-weight:600}
+.eqln .op{color:var(--ink)}
+.bx{min-width:70px;min-height:46px;display:inline-flex;align-items:center;justify-content:center;border:3px dashed var(--line);border-radius:10px;color:var(--mut);background:var(--bg)}
+.bx.cur{border-color:var(--rt);color:var(--rt);animation:pulse 1.2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 5px color-mix(in srgb,var(--rt) 25%,transparent)}}
+.eqln .op sub,.eqln .node sub,.opt sub,.ct sub{font-size:.65em}
+.arrw{display:inline-flex;flex-direction:column;align-items:center;min-width:96px;max-width:100%;margin:0 2px}
+.arrw .at,.arrw .ab{display:flex;flex-direction:column;align-items:center;font-size:.95rem;text-align:center;line-height:1.25}
+.arrw .at:not(:empty){margin-bottom:6px}.arrw .ab:not(:empty){margin-top:6px}
+.arrw .ct{font-weight:500}
+.arrw .node{font-size:.95rem;padding:4px 9px}
+.arrw .bx{min-height:34px;min-width:60px}
+.arrw .al{position:relative;width:100%;min-width:90px;height:3px;background:var(--ink);border-radius:2px}
+.arrw .al:after{content:"";position:absolute;right:-2px;top:-6px;border-left:11px solid var(--ink);border-top:7.5px solid transparent;border-bottom:7.5px solid transparent}
 [hidden]{display:none!important}
 .ov{position:fixed;inset:0;z-index:50;background:rgba(10,16,28,.65);display:grid;place-items:center;padding:16px;overflow-y:auto}
 .mod{width:min(440px,100%);background:var(--card);border:3px solid var(--ink);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px}
@@ -83,7 +97,7 @@ const TITLE="Carbon and its Compounds";
    label forms:  "label"  |  "Node^label" (restart from an earlier node)  |  "long label#short label" (short is used in the chain/summary)
    Every option starts with the same first 3 letters as the correct answer. */
 const RAW=[
-"A~Covalent bond~Covalent bond~kaise banta hai?|Sharing electrons|Sharing protons|Sharing neutrons|Sharing nuclei|Sharing ions;Covalent bond^1 pair?|Single bond (H2)|Single bond (O2)|Single bond (N2)|Single bond (CO2)|Single bond (CO);Covalent bond^2 pairs?|Double bond (O2)|Double bond (H2)|Double bond (N2)|Double bond (CH4)|Double bond (CO);Covalent bond^3 pairs?|Triple bond (N2)|Triple bond (H2)|Triple bond (O2)|Triple bond (CO2)|Triple bond (CH4);Covalent bond^molecules ke beech kya hai?|Weak forces|Weak bonds|Weak ions|Weak metals|Weak atoms;isliye kya hota hai?|Low melting & boiling points|Low melting & high boiling points|Low melting & flash points|Low melting & freezing points|Low melting & mixing points;Covalent bond^electricity ka kaisa conductor?|Poor conductors|Poor insulators|Poor solvents|Poor oxidisers|Poor catalysts;kyu hai?|No free electrons or ions|No free electrons or protons|No free electrons or neutrons|No free electrons or atoms|No free electrons or nuclei",
+"A~Covalent bond~Covalent bond~kaise banta hai?|Sharing electrons|Sharing protons|Sharing neutrons|Sharing nuclei|Sharing ions;Covalent bond^1 pair?|Single bond (H2)|Single bond (O2)|Single bond (N2)|Single bond (CO2)|Single bond (CO);Covalent bond^2 pairs?|Double bond (O2)|Double bond (H2)|Double bond (N2)|Double bond (CH4)|Double bond (CO);Covalent bond^3 pairs?|Triple bond (N2)|Triple bond (H2)|Triple bond (O2)|Triple bond (CO2)|Triple bond (CH4);Covalent bond^molecules ke beech?|Weak forces|Weak bonds|Weak ions|Weak metals|Weak atoms;isliye kya hota hai?|Low melting & boiling points|Low melting & high boiling points|Low melting & flash points|Low melting & freezing points|Low melting & mixing points;Covalent bond^electricity ka kaisa conductor?|Poor conductors|Poor insulators|Poor solvents|Poor oxidisers|Poor catalysts",
 "A~Carbon~Why carbon forms covalent bonds~ke valence kitne?|Four electrons|Four protons|Four neutrons|Four shells|Four ions;gain karein toh?|C⁴⁻ anion|C⁴⁻ cation|C⁴⁻ atom|C⁴⁻ molecule|C⁴⁻ salt;kya dikkat hai?|Hard to hold ten electrons|Hard to hold ten neutrons|Hard to hold ten protons|Hard to hold ten ions|Hard to hold ten atoms;Carbon^lose karein toh?|C⁴⁺ cation|C⁴⁺ anion|C⁴⁺ atom|C⁴⁺ molecule|C⁴⁺ salt;kya dikkat hai?|Huge energy needed|Huge energy released|Huge energy stored|Huge energy wasted|Huge energy gained;toh kya karta hai?|Shares electrons|Shares protons|Shares neutrons|Shares nuclei|Shares shells;kya banta hai?|Covalent bonds|Covalent ions|Covalent salts|Covalent metals|Covalent acids",
 "A~Diamond~Diamond~har carbon kitno se juda?|Four carbons|Four hydrogens|Four oxygens|Four halogens|Four metals;kaisa structure?|Rigid 3D structure|Rigid 2D structure|Rigid 1D structure|Rigid layered structure|Rigid ring structure;kaisa substance?|Hardest known substance|Hardest known metal|Hardest known alloy|Hardest known salt|Hardest known liquid;Diamond^synthetic kaise?|High pressure & temperature|High pressure & cooling|High pressure & freezing|High pressure & vacuum|High pressure & electrolysis",
 "A~Graphite~Graphite~har carbon kitno se juda?|Three carbons|Three hydrogens|Three oxygens|Three halogens|Three metals;kis plane mein?|Same plane|Same place|Same phase|Same pattern|Same pitch;kaisa array?|Hexagonal array|Hexagonal crystal|Hexagonal prism|Hexagonal ring|Hexagonal cube;kaise rakhe?|Layers one above other|Layers one beside other|Layers one inside other|Layers one apart other|Layers one against other;kaisa feel?|Smooth & slippery|Smooth & rough|Smooth & brittle|Smooth & sticky|Smooth & hard;Graphite^electricity ka kaisa conductor?|Good conductor|Good insulator|Good semiconductor|Good solvent|Good oxidiser",
@@ -97,7 +111,25 @@ const RAW=[
 "B~Functional group~Functional group~kya hai?|Heteroatom or group|Heteroatom or gas|Heteroatom or metal|Heteroatom or salt|Heteroatom or acid;kisse judta hai?|Carbon chain|Carbon dioxide|Carbonates|Carbides|Carbon rings;kya deta hai?|Specific properties|Specific heat|Specific gravity|Specific mass|Specific volume;Functional group^alcohol ka?|Hydroxyl group|Hydrogen group|Hydride group|Hydrate group|Hydronium group;Functional group^carboxylic acid ka?|Carboxyl group|Carbonyl group|Carbon group|Carbide group|Carbonate group",
 "B~Homologous series~Homologous series~kya hai?|Family of compounds|Family of elements|Family of mixtures|Family of metals|Family of salts;kya same hai?|Same functional group|Same functional isomer|Same functional mass|Same functional ion|Same functional salt;farak kya?|One CH2 unit|One CH3 unit|One CH4 unit|One OH unit|One CO unit;ek CH2 unit ka mass kitna? (u = atomic mass unit)|14 u|14 g|14 kg|14 mol|14 K;Homologous series^alcohol example?|Methanol, ethanol & propanol|Methanol, ethanal & propanal|Methanol, ethane & propane|Methanol, ethene & propene|Methanol, ethyne & propyne;Homologous series^alkene formula?|CnH2n|CnH2n+2|CnH2n-2|CnHn|CnH2;Homologous series^alkane formula?|CnH2n+2|CnH2n|CnH2n-2|CnHn|CnH2;Homologous series^alcohol (-OH) ka general formula?|CnH2n+1OH|CnH2n+2OH|CnH2nOH|CnH2n+1CHO|CnH2n+1COOH;Homologous series^unke reactions ka nature kaisa?|Similar, due to same functional group|Different, due to different functional groups|Similar, due to same boiling point|Similar, due to same molecular mass|Different, due to different chain length;Homologous series^boiling point kaise badalta hai?|Gradual increase|Gradual decrease|Random change|No change|Sudden jump;Homologous series^melting point kaise badalta hai?|Increases, but irregularly|Increases smoothly|Decreases smoothly|Stays the same|Drops suddenly",
 "C~Ethene~Structure of ethene~formula kya hai?|C2H4|C2H6|C2H2|C2H5|C2H3;pehle skeleton mein do carbons kis bond se jodein?|{{cc1=single bond}}|{{cc2=double bond}}|{{cc3=triple bond}};phir kya lagayein?{{sk0=carbon skeleton with open valencies}}|Hydrogen atoms|Hydrogen ions|Hydrogen bonds|Hydrogen gas|Hydrogen halides;har carbon par kitne?|{{h2=2 H on each carbon}}|{{h1=1 H on each carbon}}|{{h3=3 H on each carbon}};valency kitni bachi?{{vl=each carbon has one open valency}}|One valency|One metal|One shell|One orbit|One ion;bachi valency bharne par final structure kaisa?|{{eth=ethene H2C=CH2}}|{{ena=ethane H3C-CH3}}|{{eny=ethyne HC≡CH}}",
-"C~Organic compounds~Vital force and Wöhler~ke baare mein pehle manyata thi ki ye kahan bante hain?|Only in living systems|Only in laboratories|Only in factories|Only in minerals|Only in oceans;iske liye kya zaroori maana jaata tha?|Vital force|Vital organ|Vital sign|Vital cell|Vital gas;kisne galat kiya?|Friedrich Wöhler|Friedrich Kekule|Friedrich Mendel|Friedrich Dalton|Friedrich Newton;kab?|1828|1829|1827|1826|1825;kya banaya?|Urea|Ureter|Urethra|Ureide|Urease;kisse?|Ammonium cyanate|Ammonium chloride|Ammonium nitrate|Ammonium sulphate|Ammonium carbonate;Organic compounds^se bahar kaun?|Carbides, oxides & carbonates|Carbides, alkanes & carbonates|Carbides, acids & carbonates|Carbides, alcohols & carbonates|Carbides, esters & carbonates"
+"C~Organic compounds~Vital force and Wöhler~ke baare mein pehle manyata thi ki ye kahan bante hain?|Only in living systems|Only in laboratories|Only in factories|Only in minerals|Only in oceans;iske liye kya zaroori maana jaata tha?|Vital force|Vital organ|Vital sign|Vital cell|Vital gas;kisne galat kiya?|Friedrich Wöhler|Friedrich Kekule|Friedrich Mendel|Friedrich Dalton|Friedrich Newton;kab?|1828|1829|1827|1826|1825;kya banaya?|Urea|Ureter|Urethra|Ureide|Urease;kisse?|Ammonium cyanate|Ammonium chloride|Ammonium nitrate|Ammonium sulphate|Ammonium carbonate;Organic compounds^se bahar kaun?|Carbides, oxides & carbonates|Carbides, alkanes & carbonates|Carbides, acids & carbonates|Carbides, alcohols & carbonates|Carbides, esters & carbonates",
+"C~Name endings~Prefixes and suffixes~alcohol ka ending?|Suffix -ol|Suffix -al|Suffix -one|Suffix -ene|Suffix -yne;Name endings^aldehyde ka ending?|Suffix -al|Suffix -ol|Suffix -one|Suffix -ene|Suffix -yne;Name endings^ketone ka ending?|Suffix -one|Suffix -ol|Suffix -al|Suffix -ene|Suffix -yne;Name endings^carboxylic acid ka ending?|Suffix -oic acid|Suffix -ol|Suffix -al|Suffix -one|Suffix -yne;Name endings^alkene ka ending?|Suffix -ene|Suffix -ol|Suffix -al|Suffix -one|Suffix -yne;Name endings^alkyne ka ending?|Suffix -yne|Suffix -ol|Suffix -al|Suffix -one|Suffix -ene;Name endings^halo alkane mein kya lagta?|Prefix chloro or bromo|Prefix hydroxy or oxo|Prefix ol or al|Prefix one or ene|Prefix oic or yne",
+"C~Combustion~Combustion of carbon compounds~box|O2|H2|N2|Cl2|CO2;box|CO2|CO|H2|N2|NH3;box|Heat & light|Heat & cold|Heat & smoke|Heat & ash|Heat & sound;box|O2|H2|N2|Cl2|CO2;box|CO2|CO|H2|N2|NH3;box|H2O|H2|H2O2|NH3|O2;box|Heat & light|Heat & cold|Heat & smoke|Heat & ash|Heat & sound;box|O2|H2|N2|Cl2|CO2;box|CO2|CO|H2|N2|NH3;box|H2O|H2|H2O2|NH3|O2;box|Heat & light|Heat & cold|Heat & smoke|Heat & ash|Heat & sound;box|Oxidation|Reduction|Addition|Substitution|Neutralisation~~~(i) C + {} → {} + {}$(ii) CH4 + {} → {} + {} + {}$(iii) CH3CH2OH + {} → {} + {} + {}$These are all {} reactions",
+"C~Saturated compounds~Flames of saturated and unsaturated compounds~jalne par kaisi flame?#burn with|Clean flame|Clean soot|Clean smoke|Clean ash|Clean gas;Unsaturated compounds^jalne par kaisi flame?#burn with|Yellow flame|Yellow spark|Yellow glow|Yellow ember|Yellow beam;saath mein kya nikalta hai?#give off|Lots of black smoke|Lots of black ash|Lots of black gas|Lots of black dust|Lots of black fumes;us se kya jamta hai?#leaving a|Sooty deposit|Sooty flame|Sooty gas|Sooty liquid|Sooty ash;kahan jamta hai?#on a|Metal plate|Metal tube|Metal wire|Metal rod|Metal coin~~Saturated = clean flame, Unsaturated = yellow flame + black smoke + soot",
+"C~Combustion~Flames and soot~hawa kam ho toh kya?|Incomplete combustion|Incomplete conduction|Incomplete condensation|Incomplete conversion|Incomplete corrosion;tab kya jamta hai?|Soot (carbon)|Soot (ash)|Soot (water)|Soot (salt)|Soot (metal);Combustion^hawa bharpur ho toh?|Clean blue flame|Clean yellow flame|Clean red flame|Clean sooty flame|Clean smoky flame",
+"C~Fuel burning~Fuel burning at home and pollution~bartan kaala hone ka matlab?|Air holes blocked|Air holes widened|Air holes cleaned|Air holes opened|Air holes enlarged;iska nuksan kya?|Fuel gets wasted|Fuel gets saved|Fuel gets cooled|Fuel gets cleaned|Fuel gets doubled;Fuel burning^coal-petroleum mein kya milta?|Some nitrogen & sulphur|Some nitrogen & chlorine|Some nitrogen & helium|Some nitrogen & sodium|Some nitrogen & calcium;jalne par kya banta?|Oxides of sulphur & nitrogen|Oxides of sulphur & chlorine|Oxides of sulphur & sodium|Oxides of sulphur & helium|Oxides of sulphur & calcium;inka asar kya?|Major pollutants|Major nutrients|Major catalysts|Major solvents|Major fertilisers",
+"C~Coal~Formation of coal and petroleum~kiske avshesh se bana?|Remains of plants|Remains of animals|Remains of fish|Remains of insects|Remains of bacteria;ye kab jeeye the?|Millions of years ago|Millions of days ago|Millions of weeks ago|Millions of hours ago|Millions of months ago;kaise dabe?|Pressed under earth & rock|Pressed under water & ice|Pressed under sand & ice|Pressed under snow & sand|Pressed under oil & gas;Coal^petroleum kiske avshesh se?|Tiny sea plants & animals|Tiny sea plants & minerals|Tiny sea plants & metals|Tiny sea plants & rocks|Tiny sea plants & salts;sadne par kya bana?|Oil and gas|Oil and coal|Oil and ash|Oil and soot|Oil and salt;ye kahan phanse?|Porous rock|Porous metal|Porous glass|Porous ice|Porous wood;Coal^dono ko kya kehte?|Fossil fuels|Fossil metals|Fossil gases|Fossil salts|Fossil acids",
+"C~Oxidation~Oxidation of alcohols~box|Alkaline KMnO4 + Heat|Alkaline KCl + Heat|Alkaline K2SO4 + Heat|Alkaline KNO3 + Heat|Alkaline KOH + Heat;box|Or acidified K2Cr2O7 + Heat|Or acidified K2SO4 + Heat|Or acidified KNO3 + Heat|Or acidified KCl + Heat|Or acidified KOH + Heat;box|CH3COOH|CH3CHO|CH3CH3|CH3COOCH3|CH3CH2ONa;box|Adding oxygen|Adding hydrogen|Adding chlorine|Adding nitrogen|Adding carbon;box|Oxidising agents|Oxidising acids|Oxidising salts|Oxidising metals|Oxidising bases~~~CH3–CH2OH @({}||{}) {}$Alcohol turns into carboxylic acid by: {}$Substances that bring this about are called: {}",
+"C~Addition reaction~Addition reaction (hydrogenation)~box|H2|O2|N2|CO2|H2O;box|Palladium or nickel|Palladium or sodium|Palladium or calcium|Palladium or potassium|Palladium or sulphur;box|CH3CH3|CH3CH2OH|CH3CH2Cl|CH3COOH|CH≡CH;box|Unsaturated hydrocarbons|Unsaturated halocarbons|Unsaturated salts|Unsaturated acids|Unsaturated oxides;box|Hydrogenation|Hydration|Hydrolysis|Hydroxylation|Hydrochlorination;box|Long unsaturated chains|Long saturated chains|Long branched chains|Long cyclic chains|Long ionic chains;box|Long saturated chains|Long unsaturated chains|Long branched chains|Long cyclic chains|Long ionic chains~~~CH2=CH2 + {} @({}||) {}$Addition reaction takes place on: {}$Adding hydrogen to vegetable oil is called: {}$Vegetable oils have: {}$Animal fats have: {}",
+"C~Substitution reaction~Substitution reaction~box|Cl2|H2|O2|N2|CO2;box|Sunlight|Moonlight|Darkness|Cold water|Dilute acid;box|CH3Cl|CH3OH|CH3COOH|C2H5Cl|CH2O;box|HCl|H2|Cl2|H2O|NaCl;box|Saturated hydrocarbons|Saturated halocarbons|Saturated salts|Saturated acids|Saturated oxides;box|Fairly unreactive|Fairly acidic|Fairly basic|Fairly volatile|Fairly ionic;box|Hydrogen atoms|Hydrogen ions|Hydrogen gas|Hydrogen bonds|Hydrogen halides;box|One atom replaces another|One atom joins another|One atom shares another|One atom attracts another|One atom repels another~~~CH4 + {} @({}||) {} + {}$Substitution reaction takes place on: {}$Saturated hydrocarbons are: {}$Chlorine replaces: {}$Why the name substitution: {}",
+"C~Ethanol~Properties and reactions of ethanol~box|Soluble in all proportions|Soluble in few proportions|Soluble in no proportions|Soluble in acid only|Soluble in alkali only;box|Good solvent|Good oxidiser|Good reducer|Good conductor|Good catalyst;box|Na|Cu|Ag|Au|Fe;box|CH3CH2ONa|CH3COONa|NaOH|Na2CO3|NaCl;box|H2|O2|N2|CO2|Cl2;box|Hot conc. H2SO4 (443 K)|Hot conc. HCl (443 K)|Hot conc. HNO3 (443 K)|Hot conc. NaOH (443 K)|Hot conc. KOH (443 K);box|CH2=CH2|CH3CH3|CH≡CH|CH3CHO|CH3COOH;box|H2O|H2|H2O2|O2|CO2;box|Removes water|Removes hydrogen|Removes carbon|Removes oxygen|Removes sodium~~~Solubility of ethanol in water: {}$Why ethanol is used in medicines: {}$2CH3CH2OH + 2{} → 2{} + {}$CH3CH2OH @({}||) {} + {}$H2SO4 acts as a dehydrating agent because it: {}",
+"C~Methanol~Methanol and denatured alcohol~thodi matra se kya hota?|Can cause death|Can cause sleep|Can cause hunger|Can cause thirst|Can cause fever;jigar mein kya banta?|Methanal|Methanol|Methanoic acid|Methane|Methoxy;cells par asar kaisa?|Like cooking an egg|Like boiling water|Like melting ice|Like burning wood|Like rusting iron;Methanol^kaunsa ang prabhavit?|Optic nerve|Optic vein|Optic muscle|Optic bone|Optic artery;iska nateeja kya?|Loss of sight|Loss of smell|Loss of hearing|Loss of taste|Loss of touch;Methanol^industrial ethanol mein kya milate?|Poisons & blue dye|Poisons & red dye|Poisons & green dye|Poisons & yellow dye|Poisons & black dye;iska naam kya?|Denatured alcohol|Denatured water|Denatured oil|Denatured acid|Denatured salt",
+"C~Alcohol fuel~Alcohol as a fuel~kis ras se banta?|Sugarcane juice|Sugarcane wax|Sugarcane ash|Sugarcane leaves|Sugarcane roots;ras se kya banta?|Molasses syrup|Molasses ash|Molasses wax|Molasses oil|Molasses salt;fermentation par kya milta?|Ethanol|Ethane|Ethene|Ethyne|Ethanal;petrol mein kyun milate?|Cleaner fuel|Cleaner solvent|Cleaner catalyst|Cleaner acid|Cleaner base;poori hawa mein jalne par?|Only CO2 & water|Only CO2 & soot|Only CO2 & smoke|Only CO2 & ash|Only CO2 & sulphur",
+"C~Ethanoic acid~Properties of ethanoic acid~common naam kya?|Acetic acid|Acetone|Acetylene|Acetaldehyde|Acetamide;kaunsi class ka hai?|Carboxylic acids|Carboxylic esters|Carboxylic salts|Carboxylic alcohols|Carboxylic ketones;Ethanoic acid^5-8% solution ka upyog?|Vinegar as preservative|Vinegar as fertiliser|Vinegar as sweetener|Vinegar as solvent|Vinegar as colouring;Ethanoic acid^pure acid kab jamta?|Below 290 K|Below 190 K|Below 390 K|Below 90 K|Below 490 K;jamne se kya naam pada?|Glacial acetic acid|Glacial formic acid|Glacial nitric acid|Glacial citric acid|Glacial lactic acid;Ethanoic acid^HCl ke muqable kaisa?|Weak acid|Weak base|Weak salt|Weak oxidiser|Weak indicator;kamzor kyun hai?|Not completely ionised|Not completely reduced|Not completely oxidised|Not completely dissolved|Not completely neutralised",
+"C~Esterification~Esterification~box|CH3CH2OH|CH3OH|CH3CHO|CH3CH3|CH3COOH;box|Acid|Alkali|Water|Oxygen|Light;box|CH3COOCH2CH3|CH3CH2OCH2CH3|CH3COCH3|CH3CH2COOH|CH3COONa;box|H2O|H2|H2O2|O2|CO2;box|Acid and alcohol|Acid and aldehyde|Acid and ketone|Acid and alkane|Acid and alkene;box|Perfumes & flavourings|Perfumes & fertilisers|Perfumes & fuels|Perfumes & plastics|Perfumes & detergents~~~CH3COOH + {} @({}||) {} + {}$Esterification takes place between: {}$Esters are used in: {}",
+"C~Saponification~Saponification~box|NaOH|HCl|H2O|O2|Cl2;box|CH3CH2OH|CH3OH|CH3COOH|CH3CHO|CH3CH3;box|CH3COONa|CH3CH2ONa|CH3COOH|Na2CO3|NaCl;box|Preparing soap|Preparing soda|Preparing salt|Preparing sugar|Preparing starch~~~CH3COOCH2CH3 + {} → {} + {}$Saponification is used for: {}",
+"C~Ethanoic acid~Reactions of ethanoic acid~box|NaOH|HCl|NaCl|O2|Cl2;box|CH3COONa|CH3CH2ONa|CH3COOH|Na2CO3|NaCl;box|H2O|H2|H2O2|O2|CO2;box|Na2CO3|NaOH|NaCl|NaNO3|Na2SO4;box|CH3COONa|CH3CH2ONa|CH3COOH|Na2CO3|NaCl;box|H2O|H2|H2O2|O2|CO2;box|CO2|CO|H2|N2|NH3;box|NaHCO3|NaOH|NaCl|NaNO3|Na2SO4;box|CH3COONa|CH3CH2ONa|CH3COOH|Na2CO3|NaCl;box|H2O|H2|H2O2|O2|CO2;box|CO2|CO|H2|N2|NH3;box|Sodium acetate|Sodium ethoxide|Sodium carbonate|Sodium chloride|Sodium hydroxide;box|Pass through lime-water|Pass through brine|Pass through ammonia|Pass through petrol|Pass through ethanol~~~CH3COOH + {} → {} + {}$2CH3COOH + {} → 2{} + {} + {}$CH3COOH + {} → {} + {} + {}$Common name of sodium ethanoate: {}$Test for the gas released: {}",
+"C~Soap~Soap and micelles~soap kiske salt hain?|Long-chain carboxylic acids|Long-chain sulphonic acids|Long-chain mineral acids|Long-chain amino acids|Long-chain fatty alcohols;ionic end ko kya kehte?|Hydrophilic end|Hydrophobic end|Hydrogenated end|Hydrolysed end|Hydroxylated end;Soap^carbon chain ko kya kehte?|Hydrophobic tail|Hydrophilic tail|Hydrogenated tail|Hydrolysed tail|Hydroxylated tail;Soap^paani mein kya banata?|Micelle clusters|Micelle crystals|Micelle chains|Micelle sheets|Micelle rings;tails kahan rehti hain?|Tails inside cluster|Tails outside cluster|Tails at surface|Tails in water|Tails in air;dirt kahan phansta hai?|Centre of micelle|Centre of water|Centre of surface|Centre of paper|Centre of cloth;Soap^micelle paas kyun nahi aate?|Ion-ion repulsion|Ion-ion attraction|Ion-ion bonding|Ion-ion exchange|Ion-ion sharing;Soap^solution kaisa dikhta, kyun?|Cloudy due to scattering|Cloudy due to absorption|Cloudy due to dissolving|Cloudy due to freezing|Cloudy due to boiling",
+"C~Hard water~Hard water, scum and detergents~kiski wajah se hard?|Calcium & magnesium salts|Calcium & magnesium oxides|Calcium & magnesium metals|Calcium & magnesium acids|Calcium & magnesium alkalis;Hard water^soap ke saath kya banta?|Insoluble scum|Insoluble foam|Insoluble ester|Insoluble gas|Insoluble acid;Hard water^foam kaise banta hai?|Forms with difficulty|Forms with ease|Forms with heat|Forms with light|Forms with acid;isliye soap ki matra?|Larger amount needed|Larger amount avoided|Larger amount removed|Larger amount returned|Larger amount stored;Hard water^iska upay kya?|Use detergents|Use vinegar|Use alcohol|Use acids|Use alkali;detergent kya hote hain?|Sodium salts of sulphonic acids|Sodium salts of carboxylic acids|Sodium salts of mineral acids|Sodium salts of amino acids|Sodium salts of fatty alcohols;Hard water^detergent kaisa kaam karta?|Remain effective|Remain ineffective|Remain inactive|Remain insoluble|Remain ionised;detergent kahan upyog hote?|Shampoos & cleaning clothes|Shampoos & cooking food|Shampoos & making plastic|Shampoos & fuel|Shampoos & fertiliser"
 ];
 const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 /* ---------- Diagrams: a label may end with {{key=alt}} (shown under the question); an option may be {{key=alt}} ---------- */
@@ -123,13 +155,110 @@ const dgo=o=>{const m=DT.exec(o);return m&&DG[m[1]]?{k:m[1],t:m[2]}:null};
 const plain=o=>{const d=dgo(o);return d?d.t:o};
 const rich=o=>{const d=dgo(o);return d?`<svg class="dg" viewBox="${DG[d.k][0]}" role="img" aria-label="${esc(d.t)}">${DG[d.k][1]}</svg>`:esc(o)};
 
-const EN={"gain karein toh?":"if it gains them?","lose karein toh?":"if it loses them?","kya dikkat hai?":"what is the problem?","kaise banta hai?":"how is it formed?","1 pair?":"with 1 shared pair?","2 pairs?":"with 2 shared pairs?","3 pairs?":"with 3 shared pairs?","molecules ke beech kya hai?":"what is there between molecules?","kyu hai?":"why is it so?","isliye kya hota hai?":"so what results?","electricity ka kaisa conductor?":"what kind of conductor of electricity?","ke valence kitne?":"how many valence electrons?","gain kyun nahi?":"why can't it gain?","lose kyun nahi?":"why can't it lose?","toh kya karta hai?":"so what does it do?","kya banta hai?":"what forms?","har carbon kitno se juda?":"each carbon joined to how many?","kaisa structure?":"what structure?","kaisa substance?":"what kind of substance?","synthetic kaise?":"made artificially how?","kis plane mein?":"in which plane?","kaisa array?":"what kind of array?","kaise rakhe?":"how are they placed?","kaisa feel?":"how does it feel?","kya hai?":"what is it?","shape kaisa?":"what shape?","naam kiske naam par?":"named after whom?","kitne compounds banata hai?":"how many compounds does it form?","kin do reasons ki wajah se?":"due to which two reasons?","catenation kya?":"what is catenation?","tetravalency ki wajah se kitne atoms se bond banata hai?":"how many atoms does it bond with due to tetravalency?","bonds kaise?":"how are its bonds?","kyunki size kaisa?":"because its size is?","kaunse bonds?":"which bonds?","hydrocarbon naam?":"hydrocarbon name?","behaviour?":"how does it behave?","jalne par?":"on burning?","double bond wale hydrocarbons ka naam?":"name of hydrocarbons with a double bond?","formula?":"formula?","triple bond wale hydrocarbons ka naam?":"name of hydrocarbons with a triple bond?","1 carbon wala?":"the 1-carbon one?","2 carbon wala?":"the 2-carbon one?","3 carbon wala?":"the 3-carbon one?","4 carbon wala?":"the 4-carbon one?","5 carbon wala?":"the 5-carbon one?","6 carbon wala?":"the 6-carbon one?","general formula?":"general formula?","formula kaisa?":"how is the formula?","structure kaisa?":"how is the structure?","Butane (C4H10) ke kitne isomers?":"how many isomers does butane (C4H10) have?","Pentane (C5H12) ke kitne isomers?":"how many isomers does pentane (C5H12) have?","6 carbon, saturated?":"6 carbons, saturated?","6 carbon, double bonds?":"6 carbons, with double bonds?","kisse judta hai?":"attached to what?","kya deta hai?":"what does it give?","alcohol ka?":"for alcohol?","carboxylic acid ka?":"for carboxylic acid?","kya same hai?":"what is the same?","farak kya?":"what is the difference?","ek CH2 unit ka mass kitna? (u = atomic mass unit)":"how much is the mass of one CH2 unit? (u = atomic mass unit)","alcohol example?":"alcohol example?","alkene formula?":"alkene formula?","alkane formula?":"alkane formula?","alcohol (-OH) ka general formula?":"general formula of alcohols (-OH)?","unke reactions ka nature kaisa?":"what is the nature of their reactions?","boiling point kaise badalta hai?":"how does boiling point change?","melting point kaise badalta hai?":"how does melting point change?","formula kya hai?":"what is the formula?","pehle skeleton mein do carbons kis bond se jodein?":"first, with which bond do we join the two carbons in the skeleton?","phir kya lagayein?":"then attach what?","har carbon par kitne?":"how many on each carbon?","valency kitni bachi?":"how much valency is left?","bachi valency bharne par final structure kaisa?":"after filling the leftover valency, what is the final structure?","ke baare mein pehle manyata thi ki ye kahan bante hain?":"earlier it was believed that they form where?","iske liye kya zaroori maana jaata tha?":"what was believed necessary for this?","kisne galat kiya?":"who proved it wrong?","kab?":"when?","kya banaya?":"what did he make?","kisse?":"from what?","se bahar kaun?":"which are excluded from it?"};
+const EN={"gain karein toh?":"if it gains them?","lose karein toh?":"if it loses them?","kya dikkat hai?":"what is the problem?","kaise banta hai?":"how is it formed?","1 pair?":"with 1 shared pair?","2 pairs?":"with 2 shared pairs?","3 pairs?":"with 3 shared pairs?","molecules ke beech?":"between molecules?","isliye kya hota hai?":"so what results?","electricity ka kaisa conductor?":"what kind of conductor of electricity?","ke valence kitne?":"how many valence electrons?","gain kyun nahi?":"why can't it gain?","lose kyun nahi?":"why can't it lose?","toh kya karta hai?":"so what does it do?","kya banta hai?":"what forms?","har carbon kitno se juda?":"each carbon joined to how many?","kaisa structure?":"what structure?","kaisa substance?":"what kind of substance?","synthetic kaise?":"made artificially how?","kis plane mein?":"in which plane?","kaisa array?":"what kind of array?","kaise rakhe?":"how are they placed?","kaisa feel?":"how does it feel?","kya hai?":"what is it?","shape kaisa?":"what shape?","naam kiske naam par?":"named after whom?","kitne compounds banata hai?":"how many compounds does it form?","kin do reasons ki wajah se?":"due to which two reasons?","catenation kya?":"what is catenation?","tetravalency ki wajah se kitne atoms se bond banata hai?":"how many atoms does it bond with due to tetravalency?","bonds kaise?":"how are its bonds?","kyunki size kaisa?":"because its size is?","kaunse bonds?":"which bonds?","hydrocarbon naam?":"hydrocarbon name?","behaviour?":"how does it behave?","jalne par?":"on burning?","double bond wale hydrocarbons ka naam?":"name of hydrocarbons with a double bond?","formula?":"formula?","triple bond wale hydrocarbons ka naam?":"name of hydrocarbons with a triple bond?","1 carbon wala?":"the 1-carbon one?","2 carbon wala?":"the 2-carbon one?","3 carbon wala?":"the 3-carbon one?","4 carbon wala?":"the 4-carbon one?","5 carbon wala?":"the 5-carbon one?","6 carbon wala?":"the 6-carbon one?","general formula?":"general formula?","formula kaisa?":"how is the formula?","structure kaisa?":"how is the structure?","Butane (C4H10) ke kitne isomers?":"how many isomers does butane (C4H10) have?","Pentane (C5H12) ke kitne isomers?":"how many isomers does pentane (C5H12) have?","6 carbon, saturated?":"6 carbons, saturated?","6 carbon, double bonds?":"6 carbons, with double bonds?","kisse judta hai?":"attached to what?","kya deta hai?":"what does it give?","alcohol ka?":"for alcohol?","carboxylic acid ka?":"for carboxylic acid?","kya same hai?":"what is the same?","farak kya?":"what is the difference?","ek CH2 unit ka mass kitna? (u = atomic mass unit)":"how much is the mass of one CH2 unit? (u = atomic mass unit)","alcohol example?":"alcohol example?","alkene formula?":"alkene formula?","alkane formula?":"alkane formula?","alcohol (-OH) ka general formula?":"general formula of alcohols (-OH)?","unke reactions ka nature kaisa?":"what is the nature of their reactions?","boiling point kaise badalta hai?":"how does boiling point change?","melting point kaise badalta hai?":"how does melting point change?","formula kya hai?":"what is the formula?","pehle skeleton mein do carbons kis bond se jodein?":"first, with which bond do we join the two carbons in the skeleton?","phir kya lagayein?":"then attach what?","har carbon par kitne?":"how many on each carbon?","valency kitni bachi?":"how much valency is left?","bachi valency bharne par final structure kaisa?":"after filling the leftover valency, what is the final structure?","ke baare mein pehle manyata thi ki ye kahan bante hain?":"earlier it was believed that they form where?","iske liye kya zaroori maana jaata tha?":"what was believed necessary for this?","kisne galat kiya?":"who proved it wrong?","kab?":"when?","kya banaya?":"what did he make?","kisse?":"from what?","se bahar kaun?":"which are excluded from it?",
+"alcohol ka ending?":"ending for alcohol?",
+"aldehyde ka ending?":"ending for aldehyde?",
+"ketone ka ending?":"ending for ketone?",
+"carboxylic acid ka ending?":"ending for carboxylic acid?",
+"alkene ka ending?":"ending for alkene?",
+"alkyne ka ending?":"ending for alkyne?",
+"halo alkane mein kya lagta?":"what is added in a haloalkane?",
+"jalne par kaisi flame?":"what flame does it burn with?",
+"saath mein kya nikalta hai?":"what comes out along with it?",
+"us se kya jamta hai?":"what gets deposited from it?",
+"kahan jamta hai?":"where does it get deposited?",
+"kiske saath react karta hai?":"reacts with what?",
+"saath mein kya milta hai?":"what is obtained along with it?",
+"ye teeno kaisi prakriya hain?":"what kind of process are all three?",
+"hawa kam ho toh kya?":"if air is limited, what happens?",
+"tab kya jamta hai?":"then what gets deposited?",
+"hawa bharpur ho toh?":"if air is plentiful?",
+"bartan kaala hone ka matlab?":"what does a blackened vessel mean?",
+"iska nuksan kya?":"what is the loss from it?",
+"coal-petroleum mein kya milta?":"what is found in coal and petroleum?",
+"jalne par kya banta?":"on burning, what forms?",
+"inka asar kya?":"what is their effect?",
+"kiske avshesh se bana?":"formed from whose remains?",
+"ye kab jeeye the?":"when did they live?",
+"kaise dabe?":"how were they buried?",
+"petroleum kiske avshesh se?":"petroleum is from whose remains?",
+"sadne par kya bana?":"on decay, what formed?",
+"ye kahan phanse?":"where did it get trapped?",
+"dono ko kya kehte?":"what are both called?",
+"alcohol se kya banta?":"what does an alcohol become?",
+"ye kaise hota hai?":"how does it happen?",
+"kaun karwata hai?":"who makes it happen?",
+"do examples kaun se?":"which two examples?",
+"kin par hoti hai?":"on which does it happen?",
+"kya judta hai?":"what gets added?",
+"kaunse catalyst ke saath?":"with which catalyst?",
+"vegetable oil par kya kehlata?":"what is it called for vegetable oil?",
+"vegetable oil ki chain?":"vegetable oil's chain?",
+"animal fat ki chain?":"animal fat's chain?",
+"inka behaviour?":"how do they behave?",
+"kab tez hoti hai?":"when is it fast?",
+"kaun sa atom judta hai?":"which atom attaches?",
+"ye kya replace karta hai?":"what does it replace?",
+"methane ke saath products?":"products with methane?",
+"ye naam kyun?":"why this name?",
+"paani mein kitna ghulta?":"how much dissolves in water?",
+"dawai mein kyun use?":"why used in medicines?",
+"sodium se kaun si gas?":"which gas with sodium?",
+"doosra product kya?":"what is the other product?",
+"443 K par H2SO4 dalne se?":"on adding H2SO4 at 443 K?",
+"H2SO4 ka kya kaam?":"what is H2SO4's job?",
+"thodi matra se kya hota?":"what happens with a tiny amount?",
+"jigar mein kya banta?":"what forms in the liver?",
+"cells par asar kaisa?":"what is its effect on cells?",
+"kaunsa ang prabhavit?":"which part is affected?",
+"iska nateeja kya?":"what is the result?",
+"industrial ethanol mein kya milate?":"what is added to industrial ethanol?",
+"iska naam kya?":"what is it called?",
+"kis ras se banta?":"made from which juice?",
+"ras se kya banta?":"what is made from the juice?",
+"fermentation par kya milta?":"on fermentation, what do we get?",
+"petrol mein kyun milate?":"why add it to petrol?",
+"poori hawa mein jalne par?":"on burning in enough air?",
+"common naam kya?":"what is the common name?",
+"kaunsi class ka hai?":"which class does it belong to?",
+"5-8% solution ka upyog?":"use of the 5-8% solution?",
+"pure acid kab jamta?":"when does the pure acid freeze?",
+"jamne se kya naam pada?":"what name did freezing give it?",
+"HCl ke muqable kaisa?":"how is it compared with HCl?",
+"kamzor kyun hai?":"why is it weak?",
+"kin ke beech hota hai?":"between which two does it occur?",
+"kaunsa catalyst chahiye?":"which catalyst is needed?",
+"ye kahan kaam aate?":"where are these used?",
+"kab hota hai?":"when does it happen?",
+"kya milta hai?":"what do we get?",
+"kis kaam aata hai?":"what is it used for?",
+"NaOH ke saath kya banta?":"what forms with NaOH?",
+"iska common naam?":"what is its common name?",
+"carbonate se kaun si gas?":"which gas comes from a carbonate?",
+"gas ka test kaise?":"how is the gas tested?",
+"hydrogencarbonate se kya milta?":"what forms from a hydrogencarbonate?",
+"soap kiske salt hain?":"soap is the salt of what?",
+"ionic end ko kya kehte?":"what is the ionic end called?",
+"carbon chain ko kya kehte?":"what is the carbon chain called?",
+"paani mein kya banata?":"what does it form in water?",
+"tails kahan rehti hain?":"where do the tails stay?",
+"dirt kahan phansta hai?":"where does the dirt get trapped?",
+"micelle paas kyun nahi aate?":"why don't micelles come together?",
+"solution kaisa dikhta, kyun?":"how does the solution look, and why?",
+"kiski wajah se hard?":"hard because of what?",
+"soap ke saath kya banta?":"what forms with soap?",
+"foam kaise banta hai?":"how does foam form?",
+"isliye soap ki matra?":"so the amount of soap?",
+"iska upay kya?":"what is the remedy?",
+"detergent kya hote hain?":"what are detergents?",
+"detergent kaisa kaam karta?":"how does the detergent work?",
+"detergent kahan upyog hote?":"where are detergents used?"};
 const PN={A:"Part A · Bonding & allotropes",B:"Part B · Carbon compounds",C:"Part C · Exam extras"},cn={A:0,B:0,C:0};
 const K=RAW.map(r=>{const p=r.split("~");cn[p[0]]++;return{part:p[0],id:p[0]+cn[p[0]],root:p[1],title:p[2],steps:p[3].split(";").map(s=>{const a=s.split("|");let l=a[0],f="",sh="",dq="";
  const dm=DT.exec(l);if(dm){dq=dm[0];l=l.replace(dq,"").trim()}
  if(l.includes("^")){const q=l.split("^");f=q[0];l=q[1]}
  if(l.includes("#")){const q=l.split("#");l=q[0];sh=q[1]}
- return{l,s:sh||l,e:EN[l]||"",f,dq,a:a[1],o:a.slice(1)}}),tail:p[4]||"",mn:p[5]||""}});
+ return{l,s:sh||l,e:EN[l]||"",f,dq,a:a[1],o:a.slice(1)}}),tail:p[4]||"",mn:p[5]||"",eq:p[6]||""}});
 
 /* ---------- Setup / storage ---------- */
 const URL_="https://script.google.com/macros/s/AKfycbypo-5ThjzEFYh1t-dlCp94v01kU1wpxnu1WCNKLDgxfA3KXuN8Nh7c_XdiBqhTAfyxGA/exec";
@@ -178,11 +307,24 @@ function home(){if(!U){ask();return}
  let last="";
  K.forEach((d,i)=>{
   if(d.part!=last){last=d.part;const L=K.filter(x=>x.part==d.part);h+=`<div class="sec">${PN[d.part]} <small>${L.filter(x=>P.k[K.indexOf(x)]!=null).length}/${L.length}</small></div>`}
-  const ok=P.k[i]!=null,open=ok||i==0||P.k[i-1]!=null;
+  const ok=P.k[i]!=null,open=true;/* TEMP: all unlocked. Restore: open=ok||i==0||P.k[i-1]!=null */
   h+=`<button class="row${ok?' ok':''}" ${open?`onclick="kplay(${i})"`:'disabled'}><span>${ok?'✓':open?'▶':'🔒'}</span>${d.id} · ${esc(d.title)}${ok?`<b>${P.k[i]}/${d.steps.length}</b>`:''}</button>`});
  app.innerHTML=h;window.scrollTo(0,0)}
 
 /* ================= KEYWORD CHAIN ================= */
+const fmt=s=>s.replace(/([A-Za-z)])(\d+)/g,"$1<sub>$2</sub>");
+const eqb=d=>{let n=0;
+ const bl=()=>{const k=n++;return k<G.s?`<span class="node">${fmt(esc(d.steps[k].a))}</span>`:`<span class="bx${k==G.s?' cur':''}">?</span>`};
+ const part=x=>{x=x.trim();return x=="{}"?bl():x?`<span class="ct">${fmt(esc(x))}</span>`:''};
+ return d.eq.split("$").map(t=>`<div class="eqln">`+t.split(/(@\([^)]*\)|\{\})/).map(x=>{
+  if(x=="{}")return bl();
+  if(x.slice(0,2)=="@("){const p=x.slice(2,-1).split("||");const top=part(p[0]||""),bot=part(p[1]||"");return `<span class="arrw"><span class="at">${top}</span><span class="al"></span><span class="ab">${bot}</span></span>`}
+  x=x.trim();return x?`<span class="op">${fmt(esc(x))}</span>`:''}).join("")+`</div>`).join("")};
+const eqt=d=>{let n=0;const f=()=>fmt(esc(d.steps[n++].a));
+ return d.eq.split("$").map(t=>t.split(/(@\([^)]*\)|\{\})/).map(x=>{
+  if(x=="{}")return f();
+  if(x.slice(0,2)=="@(")return "—("+x.slice(2,-1).split("||").map(y=>y.trim()=="{}"?f():fmt(esc(y.trim()))).filter(Boolean).join(" / ")+")→";
+  return fmt(esc(x))}).join("")).join(". ")};
 function kplay(i){lt=Date.now();G={i,s:0,m:0,first:0,got:[],lock:0};kdraw()}
 function kdraw(){G.lock=0;
  const d=K[G.i],st=d.steps[G.s];
@@ -191,12 +333,13 @@ function kdraw(){G.lock=0;
  G.got.forEach((g,k)=>{const s=d.steps[k];if(s.f)b+=br(s.f);b+=`<span class="arr"><b>${esc(s.s)}</b><span class="ln"></span><i class="en">${esc(s.e)}</i></span><span class="node">${rich(g)}</span>`});
  const fin=G.s>=d.steps.length;
  if(!fin){if(st.f)b+=br(st.f);b+=`<span class="arr q"><b>${esc(st.s)}</b><span class="ln"></span><i class="en">${esc(st.e)}</i></span>`}
+ if(d.eq)b=eqb(d);
  let h=`<div><div class="top"><button class="back" onclick="home()">‹ Topics</button><span class="hud">Step ${Math.min(G.s+1,d.steps.length)} of ${d.steps.length}</span></div>
  <div class="tt">${d.id} · ${esc(d.title)}</div><div class="prog"><i style="width:${G.s/d.steps.length*100}%"></i></div><div class="kboard">${b}</div>`;
  if(!fin){const subj=st.f||(G.got.length?G.got[G.got.length-1]:d.root);
-  h+=`<div class="ask"><span>${esc(plain(subj))}</span> ${esc(st.l)}</div>${st.dq?`<div class="qd">${rich(st.dq)}</div>`:''}<div class="opts">`;
-  sh(st.o).forEach(o=>h+=`<button class="opt${dgo(o)?' dgopt':''}" data-a="${o===st.a?1:0}" onclick="kpick(this)">${rich(o)}</button>`);h+='</div>'}
- else{const n=d.steps.length,sent=esc(d.root)+d.steps.map(s=>(s.f?". "+esc(s.f)+" ":" ")+esc(s.s)+" "+esc(plain(s.a))).join("")+(d.tail?" "+esc(d.tail):"")+".",nx=G.i+1<K.length?G.i+1:null;
+  h+=(d.eq?`<div class="ask"><span>Highlighted box mein kya aayega?</span> What goes in the highlighted box?</div>`:`<div class="ask"><span>${esc(plain(subj))}</span> ${esc(st.l)}</div>`)+`${st.dq?`<div class="qd">${rich(st.dq)}</div>`:''}<div class="opts">`;
+  sh(st.o).forEach(o=>h+=`<button class="opt${dgo(o)?' dgopt':''}" data-a="${o===st.a?1:0}" onclick="kpick(this)">${d.eq?fmt(rich(o)):rich(o)}</button>`);h+='</div>'}
+ else{const n=d.steps.length,sent=d.eq?eqt(d):esc(d.root)+d.steps.map(s=>(s.f?". "+esc(s.f)+" ":" ")+esc(s.s)+" "+esc(plain(s.a))).join("")+(d.tail?" "+esc(d.tail):"")+".",nx=G.i+1<K.length?G.i+1:null;
   P.k[G.i]=Math.max(P.k[G.i]||0,G.first);addTime();save();
   const status=checkChapter();
   h+=`<div class="end"><h3>${G.first==n?'Perfect chain! ⭐':'Chain complete! 👏'}</h3><p><b>${G.first}</b> of ${n} keywords right on the first try.</p><p>${sent}</p>${d.mn?`<p class="mn">Mnemonic: ${esc(d.mn)}</p>`:''}${status}
